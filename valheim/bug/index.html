@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <title>Valheim Mod Bug Report</title>
-  <meta name="description" content="Report a bug with the Valheim portal developer commands mod.">
+  <meta name="description" content="Report a bug with a JuStIIFrEsH Valheim mod.">
   <style>
     :root {
       --bg: #0d0f0e;
@@ -106,6 +106,7 @@
     }
 
     input,
+    select,
     textarea {
       width: 100%;
       border: 1px solid var(--field-border);
@@ -119,6 +120,7 @@
     }
 
     input:focus,
+    select:focus,
     textarea:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba(216, 138, 53, 0.14);
@@ -203,6 +205,15 @@
         <div class="hp" aria-hidden="true">
           <label for="botcheck">Leave this empty</label>
           <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div>
+          <label for="mod">Mod</label>
+          <select id="mod" name="Mod" required>
+            <option value="" selected disabled>Select a mod</option>
+            <option value="FreshCommands">FreshCommands</option>
+            <option value="FreshDedicatedStorage">FreshDedicatedStorage</option>
+          </select>
         </div>
 
         <div>
