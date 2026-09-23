@@ -308,6 +308,37 @@
       .utility-panel { padding: 24px 22px; }
     }
 
+    @media (max-width: 700px) {
+      body {
+        background: var(--bg);
+      }
+
+      body::before {
+        inset: auto;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        height: 100lvh;
+        background:
+          linear-gradient(
+            to bottom,
+            rgba(5,7,11,.12) 0%,
+            rgba(5,7,11,.2) 58%,
+            rgba(5,7,11,.38) 100%
+          ),
+          linear-gradient(
+            90deg,
+            rgba(5,7,11,.08) 0%,
+            rgba(5,7,11,.2) 100%
+          ),
+          url("/justiifresh.com%20background.png") 7% center / auto 100% no-repeat,
+          var(--bg);
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+      }
+    }
+
     @media (max-width: 520px) {
       main { padding: 42px 14px 36px; }
       .glass-panel { border-radius: 20px; }
