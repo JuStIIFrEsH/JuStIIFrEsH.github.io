@@ -83,7 +83,7 @@
     main {
       position: relative;
       z-index: 1;
-      width: min(100%, 920px);
+      width: min(100%, 1240px);
       min-height: 100vh;
       margin: 0 auto;
       padding: clamp(56px, 10vh, 110px) 22px 64px;
@@ -92,9 +92,15 @@
       justify-content: center;
     }
 
-    .content-panel {
-      width: min(100%, 700px);
-      padding: clamp(26px, 4vw, 42px);
+    .home-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 700px) minmax(280px, 330px);
+      gap: 18px;
+      align-items: stretch;
+      justify-content: center;
+    }
+
+    .glass-panel {
       border: 1px solid rgba(125, 211, 252, .18);
       border-radius: 24px;
       background:
@@ -106,6 +112,98 @@
         inset 0 1px 0 rgba(255,255,255,.035);
       backdrop-filter: blur(16px) saturate(115%);
       -webkit-backdrop-filter: blur(16px) saturate(115%);
+    }
+
+    .content-panel {
+      width: 100%;
+      padding: clamp(26px, 4vw, 42px);
+    }
+
+    .utility-panel {
+      display: flex;
+      flex-direction: column;
+      padding: 28px 24px;
+    }
+
+    .utility-title {
+      margin: 0 0 6px;
+      font-size: 1.35rem;
+      letter-spacing: -.025em;
+    }
+
+    .utility-copy {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+
+    .utility-group + .utility-group {
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(125, 211, 252, .13);
+    }
+
+    .utility-label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--cyan);
+      font: 700 .68rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .utility-buttons {
+      display: grid;
+      gap: 9px;
+    }
+
+    .utility-button {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 46px;
+      padding: 11px 42px 11px 14px;
+      border: 1px solid rgba(125, 211, 252, .17);
+      border-radius: 12px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 750;
+      font-size: .92rem;
+      background:
+        linear-gradient(135deg, rgba(88,217,255,.055), transparent 55%),
+        rgba(11, 16, 26, .72);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+      transition: transform .16s ease, border-color .16s ease, background .16s ease, box-shadow .16s ease;
+    }
+
+    .utility-button::after {
+      content: "↗";
+      position: absolute;
+      right: 14px;
+      color: var(--cyan);
+      font-size: 1rem;
+      opacity: .9;
+    }
+
+    .utility-button.local::after {
+      content: "→";
+    }
+
+    .utility-button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(88,217,255,.52);
+      background:
+        linear-gradient(135deg, rgba(88,217,255,.1), transparent 60%),
+        rgba(14, 21, 34, .86);
+      box-shadow: 0 10px 24px rgba(0,0,0,.2);
+    }
+
+    .utility-button.donate {
+      border-color: rgba(166,108,255,.3);
+      background:
+        linear-gradient(135deg, rgba(166,108,255,.15), rgba(88,217,255,.055)),
+        rgba(13, 17, 30, .8);
     }
 
     h1 {
@@ -197,32 +295,67 @@
       font-size: .95rem;
     }
 
+    @media (max-width: 900px) {
+      main { justify-content: flex-start; padding-top: 56px; }
+      .home-layout { grid-template-columns: minmax(0, 700px); }
+      .utility-panel { padding: 24px 22px; }
+    }
+
     @media (max-width: 520px) {
-      main { justify-content: flex-start; padding-top: 78px; }
-      .content-panel { padding: 24px 20px; border-radius: 20px; }
+      main { padding: 42px 14px 36px; }
+      .glass-panel { border-radius: 20px; }
+      .content-panel { padding: 24px 20px; }
+      .utility-panel { padding: 22px 18px; }
       h1 { font-size: clamp(3.1rem, 18vw, 5rem); }
       .card-copy { margin-right: 34px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .card { transition: none; }
+      .card,
+      .utility-button { transition: none; }
     }
   </style>
 </head>
 <body>
   <main>
-    <section class="content-panel">
-      <h1>JuStIIFrEsH</h1>
-      <p class="tagline">Game development, mods, tools, and technical projects.</p>
+    <div class="home-layout">
+      <section class="content-panel glass-panel">
+        <h1>JuStIIFrEsH</h1>
+        <p class="tagline">Game development, mods, tools, and technical projects.</p>
 
-      <nav class="links" aria-label="Projects">
-        <a class="card" href="/valheim/">
-          <span class="card-kicker">Mods</span>
-          <span class="card-title">Valheim</span>
-          <span class="card-copy">Browse mods, source code, releases on Thunderstore, Hexium, and Nexus Mods, plus bug reporting and feedback.</span>
-        </a>
-      </nav>
-    </section>
+        <nav class="links" aria-label="Projects">
+          <a class="card" href="/valheim/">
+            <span class="card-kicker">Mods</span>
+            <span class="card-title">Valheim</span>
+            <span class="card-copy">Browse mods, source code, releases on Thunderstore, Hexium, and Nexus Mods, plus bug reporting and feedback.</span>
+          </a>
+        </nav>
+      </section>
+
+      <aside class="utility-panel glass-panel" aria-label="Mod platforms and support links">
+        <h2 class="utility-title">Links</h2>
+        <p class="utility-copy">Releases, source, support, and project contact.</p>
+
+        <div class="utility-group">
+          <span class="utility-label">Mod Platforms</span>
+          <div class="utility-buttons">
+            <a class="utility-button" href="https://thunderstore.io/c/valheim/p/JuStIIFrEsH/" target="_blank" rel="noopener noreferrer">Thunderstore</a>
+            <a class="utility-button" href="https://valheim.hexium.gg/?q=JuStIIFrEsH" target="_blank" rel="noopener noreferrer">Hexium</a>
+            <a class="utility-button" href="https://www.nexusmods.com/games/valheim/mods?author=JuStIIFrEsH" target="_blank" rel="noopener noreferrer">Nexus Mods</a>
+            <a class="utility-button" href="https://github.com/JuStIIFrEsH/Mods" target="_blank" rel="noopener noreferrer">GitHub Source</a>
+          </div>
+        </div>
+
+        <div class="utility-group">
+          <span class="utility-label">Contact &amp; Support</span>
+          <div class="utility-buttons">
+            <a class="utility-button local" href="/valheim/bug/">Report a Bug</a>
+            <a class="utility-button local" href="/valheim/feedback/">Send Feedback</a>
+            <a class="utility-button donate" href="https://ko-fi.com/justiifresh" target="_blank" rel="noopener noreferrer">Donate</a>
+          </div>
+        </div>
+      </aside>
+    </div>
   </main>
 </body>
 </html>
