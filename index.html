@@ -92,25 +92,20 @@
       justify-content: center;
     }
 
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      width: fit-content;
-      margin-bottom: 18px;
-      color: var(--cyan);
-      font: 700 .76rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
-    .status::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 14px var(--cyan);
+    .content-panel {
+      width: min(100%, 700px);
+      padding: clamp(26px, 4vw, 42px);
+      border: 1px solid rgba(125, 211, 252, .18);
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(88,217,255,.055), transparent 38%),
+        linear-gradient(315deg, rgba(166,108,255,.045), transparent 46%),
+        rgba(5, 9, 16, .58);
+      box-shadow:
+        0 24px 70px rgba(0,0,0,.34),
+        inset 0 1px 0 rgba(255,255,255,.035);
+      backdrop-filter: blur(16px) saturate(115%);
+      -webkit-backdrop-filter: blur(16px) saturate(115%);
     }
 
     h1 {
@@ -202,19 +197,9 @@
       font-size: .95rem;
     }
 
-    .corner {
-      position: fixed;
-      left: 22px;
-      bottom: 18px;
-      z-index: 1;
-      color: rgba(156,169,189,.55);
-      font: 600 .68rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-    }
-
     @media (max-width: 520px) {
       main { justify-content: flex-start; padding-top: 78px; }
+      .content-panel { padding: 24px 20px; border-radius: 20px; }
       h1 { font-size: clamp(3.1rem, 18vw, 5rem); }
       .card-copy { margin-right: 34px; }
     }
@@ -226,18 +211,18 @@
 </head>
 <body>
   <main>
-    <div class="status">Player One // Online</div>
-    <h1>JuStIIFrEsH</h1>
-    <p class="tagline">Games, mods, and experiments built for fun.</p>
+    <section class="content-panel">
+      <h1>JuStIIFrEsH</h1>
+      <p class="tagline">Games, mods, and experiments built for fun.</p>
 
-    <nav class="links" aria-label="Projects">
-      <a class="card" href="/valheim/">
-        <span class="card-kicker">Mods</span>
-        <span class="card-title">Valheim</span>
-        <span class="card-copy">Browse mods, source code, releases on Thunderstore, Hexium, and Nexus Mods, plus bug reporting and feedback.</span>
-      </a>
-    </nav>
+      <nav class="links" aria-label="Projects">
+        <a class="card" href="/valheim/">
+          <span class="card-kicker">Mods</span>
+          <span class="card-title">Valheim</span>
+          <span class="card-copy">Browse mods, source code, releases on Thunderstore, Hexium, and Nexus Mods, plus bug reporting and feedback.</span>
+        </a>
+      </nav>
+    </section>
   </main>
-  <div class="corner">System Ready</div>
 </body>
 </html>
