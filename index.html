@@ -46,9 +46,8 @@
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 18% 18%, rgba(88,217,255,.16), transparent 24rem),
-        radial-gradient(circle at 82% 12%, rgba(166,108,255,.16), transparent 28rem),
-        radial-gradient(circle at 50% 105%, rgba(109,124,255,.14), transparent 32rem),
+        linear-gradient(90deg, rgba(5,7,11,.34) 0%, rgba(5,7,11,.12) 48%, rgba(5,7,11,.24) 100%),
+        url("/justiifresh.com%20background.png") center center / cover fixed no-repeat,
         var(--bg);
     }
 
@@ -57,14 +56,12 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background:
-        linear-gradient(rgba(88,217,255,.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(88,217,255,.055) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,.85), transparent 82%);
-      transform: perspective(650px) rotateX(58deg) scale(1.45) translateY(14%);
-      transform-origin: center bottom;
-      opacity: .7;
+      background: linear-gradient(
+        to bottom,
+        rgba(5,7,11,.02) 0%,
+        rgba(5,7,11,.08) 55%,
+        rgba(5,7,11,.24) 100%
+      );
     }
 
     body::after {
@@ -81,21 +78,6 @@
       );
       mix-blend-mode: screen;
       opacity: .45;
-    }
-
-    .orb {
-      position: fixed;
-      width: 340px;
-      height: 340px;
-      border: 1px solid rgba(88,217,255,.16);
-      border-radius: 50%;
-      right: -150px;
-      top: 18%;
-      box-shadow:
-        0 0 0 34px rgba(88,217,255,.025),
-        0 0 0 70px rgba(166,108,255,.018),
-        0 0 90px rgba(88,217,255,.08);
-      pointer-events: none;
     }
 
     main {
@@ -235,7 +217,6 @@
       main { justify-content: flex-start; padding-top: 78px; }
       h1 { font-size: clamp(3.1rem, 18vw, 5rem); }
       .card-copy { margin-right: 34px; }
-      .orb { width: 250px; height: 250px; right: -130px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -244,7 +225,6 @@
   </style>
 </head>
 <body>
-  <div class="orb" aria-hidden="true"></div>
   <main>
     <div class="status">Player One // Online</div>
     <h1>JuStIIFrEsH</h1>
