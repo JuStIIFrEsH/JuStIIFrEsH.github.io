@@ -8,17 +8,18 @@
   <meta name="description" content="Send feedback or suggestions for JuStIIFrEsH mods.">
   <style>
     :root {
-      --bg: #0d0f0e;
-      --panel: rgba(22, 25, 23, 0.94);
-      --panel-border: #3d403a;
-      --text: #ece7db;
-      --muted: #aaa79e;
-      --accent: #d88a35;
-      --accent-2: #f1b35f;
-      --danger: #d86a5f;
-      --success: #75b884;
-      --field: #151816;
-      --field-border: #4b4f48;
+      --bg: #05070b;
+      --panel: rgba(5, 9, 16, .28);
+      --panel-border: rgba(125, 211, 252, .16);
+      --text: #f3f7ff;
+      --muted: #9ca9bd;
+      --cyan: #58d9ff;
+      --blue: #6d7cff;
+      --violet: #a66cff;
+      --danger: #ff7b86;
+      --success: #6ee7b7;
+      --field: rgba(11, 16, 26, .76);
+      --field-border: rgba(125, 211, 252, .19);
     }
 
     * { box-sizing: border-box; }
@@ -29,8 +30,9 @@
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 50% -15%, rgba(216, 138, 53, 0.16), transparent 42rem),
-        linear-gradient(180deg, #111412 0%, var(--bg) 70%);
+        radial-gradient(circle at 18% 12%, rgba(88,217,255,.14), transparent 26rem),
+        radial-gradient(circle at 84% 8%, rgba(166,108,255,.14), transparent 30rem),
+        linear-gradient(180deg, #090e18 0%, var(--bg) 72%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -56,17 +58,23 @@
       width: 12px;
       height: 12px;
       transform: rotate(45deg);
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 18px rgba(216, 138, 53, 0.45);
+      border: 2px solid var(--cyan);
+      box-shadow: 0 0 18px rgba(88,217,255,.5);
     }
 
     .card {
-      background: var(--panel);
+      background:
+        linear-gradient(135deg, rgba(88,217,255,.028), transparent 38%),
+        linear-gradient(315deg, rgba(166,108,255,.022), transparent 46%),
+        var(--panel);
       border: 1px solid var(--panel-border);
       border-radius: 18px;
       padding: clamp(22px, 5vw, 38px);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
-      backdrop-filter: blur(8px);
+      box-shadow:
+        0 24px 70px rgba(0,0,0,.3),
+        inset 0 1px 0 rgba(255,255,255,.03);
+      backdrop-filter: blur(8px) saturate(108%);
+      -webkit-backdrop-filter: blur(8px) saturate(108%);
     }
 
     h1 {
@@ -74,6 +82,7 @@
       font-size: clamp(1.8rem, 5vw, 2.5rem);
       line-height: 1.08;
       letter-spacing: -0.03em;
+      text-shadow: 0 0 28px rgba(88,217,255,.1);
     }
 
     .intro {
@@ -110,7 +119,7 @@
       font: inherit;
       padding: 12px 13px;
       outline: none;
-      transition: border-color .15s ease, box-shadow .15s ease;
+      transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
     }
 
     select:disabled { opacity: .58; cursor: not-allowed; }
@@ -118,13 +127,14 @@
     input:focus,
     select:focus,
     textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(216, 138, 53, 0.14);
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(88,217,255,.14);
+      background: rgba(14,21,34,.88);
     }
 
     textarea {
       resize: vertical;
-      min-height: 170px;
+      min-height: 118px;
       line-height: 1.45;
     }
 
@@ -137,19 +147,23 @@
 
     button {
       appearance: none;
-      border: 0;
+      border: 1px solid rgba(88,217,255,.45);
       border-radius: 10px;
       min-height: 48px;
       padding: 12px 18px;
-      background: linear-gradient(180deg, var(--accent-2), var(--accent));
-      color: #1b1209;
+      background: linear-gradient(135deg, var(--cyan), #87e9ff);
+      color: #07131a;
       font: inherit;
       font-weight: 800;
       cursor: pointer;
-      transition: transform .12s ease, filter .12s ease, opacity .12s ease;
+      transition: transform .12s ease, filter .12s ease, opacity .12s ease, box-shadow .12s ease;
     }
 
-    button:hover { filter: brightness(1.07); }
+    button:hover {
+      filter: brightness(1.05);
+      box-shadow: 0 0 24px rgba(88,217,255,.13);
+    }
+
     button:active { transform: translateY(1px); }
     button:disabled { cursor: wait; opacity: .65; }
 
@@ -161,6 +175,15 @@
 
     #status.success { color: var(--success); }
     #status.error { color: var(--danger); }
+
+    .privacy {
+      margin: 20px 0 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(125,211,252,.13);
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
 
     .hp {
       position: absolute !important;
