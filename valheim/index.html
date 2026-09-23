@@ -147,14 +147,19 @@
     }
 
     footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px 20px;
-      align-items: center;
+      display: grid;
+      gap: 12px;
       margin-top: 24px;
       padding: 18px 2px 0;
       color: var(--muted);
       font-size: 0.88rem;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 20px;
+      align-items: center;
     }
 
     footer a {
@@ -207,13 +212,18 @@
     </section>
 
     <footer>
-      <span>Need help with a mod?</span>
-      <a href="/valheim/bug/">Report a bug</a>
-      <a href="/valheim/feedback/">Send feedback</a>
-      <a href="https://ko-fi.com/justiifresh" target="_blank" rel="noopener noreferrer">Donate</a>
-      <a href="https://thunderstore.io/c/valheim/p/JuStIIFrEsH/" target="_blank" rel="noopener noreferrer">Thunderstore</a>
-      <a href="https://valheim.hexium.gg/?q=JuStIIFrEsH" target="_blank" rel="noopener noreferrer">Hexium</a>
-      <a href="https://www.nexusmods.com/games/valheim/mods?author=JuStIIFrEsH" target="_blank" rel="noopener noreferrer">Nexus Mods</a>
+      <div class="footer-row">
+        <span>Need help with a mod?</span>
+        <a href="/valheim/bug/">Report a bug</a>
+        <a href="/valheim/feedback/">Send feedback</a>
+        <a href="https://ko-fi.com/justiifresh" target="_blank" rel="noopener noreferrer">Donate</a>
+      </div>
+      <div class="footer-row">
+        <span>See all mods:</span>
+        <a href="https://thunderstore.io/c/valheim/p/JuStIIFrEsH/" target="_blank" rel="noopener noreferrer">Thunderstore</a>
+        <a href="https://valheim.hexium.gg/?q=JuStIIFrEsH" target="_blank" rel="noopener noreferrer">Hexium</a>
+        <a href="https://www.nexusmods.com/games/valheim/mods?author=JuStIIFrEsH" target="_blank" rel="noopener noreferrer">Nexus Mods</a>
+      </div>
     </footer>
   </main>
 </body>
