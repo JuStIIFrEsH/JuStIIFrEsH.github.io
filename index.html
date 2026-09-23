@@ -106,7 +106,7 @@
       background:
         linear-gradient(135deg, rgba(88,217,255,.055), transparent 38%),
         linear-gradient(315deg, rgba(166,108,255,.045), transparent 46%),
-        rgba(5, 9, 16, .48);
+        rgba(5, 9, 16, .40);
       box-shadow:
         0 24px 70px rgba(0,0,0,.34),
         inset 0 1px 0 rgba(255,255,255,.035);
@@ -302,13 +302,13 @@
       font-size: .95rem;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 900px) and (orientation: portrait) {
       main { justify-content: flex-start; padding-top: 56px; }
       .home-layout { grid-template-columns: minmax(0, 700px); }
       .utility-panel { padding: 24px 22px; }
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 700px) and (orientation: portrait) {
       body {
         background: var(--bg);
       }
@@ -332,20 +332,60 @@
             rgba(5,7,11,.08) 0%,
             rgba(5,7,11,.2) 100%
           ),
-          url("/justiifresh.com%20background.png") 7% center / auto 100% no-repeat,
+          url("/justiifresh.com%20background.png") 22% center / auto 100% no-repeat,
           var(--bg);
         transform: translateZ(0);
         -webkit-transform: translateZ(0);
       }
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 520px) and (orientation: portrait) {
       main { padding: 42px 14px 36px; }
       .glass-panel { border-radius: 20px; }
       .content-panel { padding: 24px 20px; }
       .utility-panel { padding: 22px 18px; }
       h1 { font-size: clamp(3.1rem, 18vw, 5rem); }
       .card-copy { margin-right: 34px; }
+    }
+
+    @media (orientation: landscape) and (max-height: 600px) {
+      body {
+        background: var(--bg);
+      }
+
+      body::before {
+        inset: 0;
+        width: auto;
+        height: auto;
+        background:
+          linear-gradient(90deg, rgba(5,7,11,.30) 0%, rgba(5,7,11,.10) 48%, rgba(5,7,11,.22) 100%),
+          linear-gradient(to bottom, rgba(5,7,11,.02) 0%, rgba(5,7,11,.12) 100%),
+          url("/justiifresh.com%20background.png") center center / cover no-repeat,
+          var(--bg);
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+      }
+
+      main {
+        justify-content: flex-start;
+        padding: 24px 14px 28px;
+      }
+
+      .home-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(250px, 300px);
+      }
+
+      .content-panel {
+        padding: 24px;
+      }
+
+      .utility-panel {
+        padding: 22px 20px;
+      }
+
+      h1 {
+        font-size: clamp(3.4rem, 9vw, 5.4rem);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
