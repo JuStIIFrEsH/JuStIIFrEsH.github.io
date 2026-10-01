@@ -1,0 +1,52 @@
+name: Generate site icons
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/generate-site-icons.yml
+
+permissions:
+  contents: write
+
+jobs:
+  icons:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install SVG renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin
+
+      - name: Build iOS and web app PNG icons
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path("assets/home-icon-v6.svg").read_text()
+          source = source.replace(
+              'x="85" y="85" width="854" height="854"',
+              'x="-20" y="-20" width="1064" height="1064"'
+          )
+          Path("/tmp/home-icon-large.svg").write_text(source)
+          PY
+
+          for size in 120 152 167 180 192 512; do
+            rsvg-convert -w "$size" -h "$size" /tmp/home-icon-large.svg > "apple-touch-icon-$size.png"
+          done
+
+          cp apple-touch-icon-180.png apple-touch-icon.png
+          cp apple-touch-icon-192.png app-icon-192.png
+          cp apple-touch-icon-512.png app-icon-512.png
+
+      - name: Commit generated icons
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apple-touch-icon.png apple-touch-icon-120.png apple-touch-icon-152.png apple-touch-icon-167.png apple-touch-icon-180.png app-icon-192.png app-icon-512.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate compatible iOS site icons"
+            git push
+          fi
